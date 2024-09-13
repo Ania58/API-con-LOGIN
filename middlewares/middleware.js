@@ -12,11 +12,11 @@ function generateToken(user) {
     
     const token = req.session.token; 
     if (!token) {
-      return res.status(401).json({ mensaje: 'token no generado' });
+      return res.status(401).json({ message: 'Token does not exist' });
     }
     jwt.verify(token, hashedSecret, (err, decoded) => {
       if (err) {
-        return res.status(401).json({ mensaje: 'token inválido' });
+        return res.status(401).json({ message: 'Token invalid' });
       }
       req.user = decoded.user;
       next();

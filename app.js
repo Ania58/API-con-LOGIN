@@ -13,13 +13,13 @@ app.use(express.json())
 app.use(
     session({
             secret: hashedSecret,
-            resave: false,
+            resave: 'false',
             saveUninitialized: true,
             cookie: {secure: false}
         })
     )
     
-    app.use('/', router)
+    app.use(router)
 
     
     app.listen(PORT,() => {
